@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+.white{
+  background-color: white;
+  color: black;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+body{
+    padding: 5px;
+    background-color: cadetblue;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+header h1 {
+  color: coral;
+  border-right: 2px solid #000;
+  animation: cursor 1s infinite step-end, typing 15s infinite steps(14);
+  white-space: nowrap;
+  overflow: hidden;
+}
+@keyframes cursor{
+  0%, 100%{border-color: transparent;}
+  50%{border-color: #000;}
+}
+
+@keyframes typing{
+  0%{ width: 0px} /*Text is hidden*/
+  30%{ width: 310px;} /*The enitre header will be typed out*/
+  80%{ width: 310px;} /*Text stays visible*/
+  90%{ width: 0px;} /*Text is deleted*/
+  100%{ width: 0px;} /*Text stays hidden*/
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.border{
+    border: 1px solid black;
+}
+.radius{
+    border-radius: 4px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+.clickable:active{
+    background-color: grey;
+    color: white;
+}
+
+.overFlow{
+    overflow: auto;
+}
+

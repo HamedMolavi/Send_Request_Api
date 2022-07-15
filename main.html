@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer 2</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <header>
+        <h1 class="font-mobile">SEND&nbsp&nbspA&nbsp&nbspREQUEST</h1>
+    </header>
+    <div class="flex mt-8 mb-8">
+        <input id="inpUrl" type="url" placeholder="URL" class="border radius p-8 mb-16 col-12 col-s-6">
+        <input id="inpMethod" list="method" placeholder="Method" class="border radius p-8 ml-8 col-4 col-s-2">
+        <datalist id="method">
+            <option value="GET">
+            <option value="POST">
+        </datalist>
+        <input id="btnSubmit" type="submit" class="border clickable radius p-8 mr-8 col-4 col-s-3">
+    </div>
+    <div class="flex">
+        <div id="divRequest" class="p-8 bb-2 bb-s-0 col-12 col-s-6" style="display: none;">
+            <p style="color: white;" class="mb-8">Request Body:</p>
+            <textarea name="bodyRequest" id="inpRequest" class="white col-12 h-250 p-8"></textarea>
+        </div>
+        <div id="divResponse" class="p-8 col-12 col-s-6" style="display: none;">
+            <p style="color: white;" class="mb-8">Response Body:</p>
+            <textarea name="bodyResponse" id="bodyResponse" class="white col-12 h-250 p-8" disabled></textarea>
+        </div>
+    </div>
+    <div id="divResult" class="p-8 col-12" style="display: none;">
+        <p id="info" class="p-8 white">Plain Text: -, Status: -</p>
+    </div>
+    <script src="j.js"></script>
+</body>
+
+</html>
