@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+        .white {
+            background-color: white;
+            color: black;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 5px;
+            background-color: cadetblue;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        header h1 {
+            color: coral;
+            border-right: 2px solid #000;
+            animation: cursor 1s infinite step-end, typing 15s infinite steps(14);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes cursor {
+
+            0%,
+            100% {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #000;
+            }
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0px
+            }
+
+            /*Text is hidden*/
+            30% {
+                width: 310px;
+            }
+
+            /*The enitre header will be typed out*/
+            80% {
+                width: 310px;
+            }
+
+            /*Text stays visible*/
+            90% {
+                width: 0px;
+            }
+
+            /*Text is deleted*/
+            100% {
+                width: 0px;
+            }
+
+            /*Text stays hidden*/
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .radius {
+            border-radius: 4px;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+
+        .clickable:active {
+            background-color: grey;
+            color: white;
+        }
+
+        .overFlow {
+            overflow: auto;
+        }
+
+
+        /* Mobile First */
+        .col-0 {
+            display: none;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        .mr-8 {
+            margin-right: 8px;
+        }
+
+        .ml-8 {
+            margin-left: 8px;
+        }
+
+        .mt-8 {
+            margin-top: 8px;
+        }
+
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+
+        .mr-16 {
+            margin-right: 16px;
+        }
+
+        .ml-16 {
+            margin-left: 16px;
+        }
+
+        .mt-16 {
+            margin-top: 16px;
+        }
+
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+
+        .mr-32 {
+            margin-right: 32px;
+        }
+
+        .ml-32 {
+            margin-left: 32px;
+        }
+
+        .mt-32 {
+            margin-top: 32px;
+        }
+
+        .mb-32 {
+            margin-bottom: 32px;
+        }
+
+        .mr-64 {
+            margin-right: 64px;
+        }
+
+        .ml-64 {
+            margin-left: 64px;
+        }
+
+        .mt-64 {
+            margin-top: 64px;
+        }
+
+        .mb-64 {
+            margin-bottom: 64px;
+        }
+
+        .p-8 {
+            padding: 8px;
+        }
+
+        .p-16 {
+            padding: 16px;
+        }
+
+        .p-32 {
+            padding: 32px;
+        }
+
+        .p-32 {
+            padding: 64px;
+        }
+
+        .pr-8 {
+            padding-right: 8px;
+        }
+
+        .pl-8 {
+            padding-left: 8px;
+        }
+
+        .pt-8 {
+            padding-top: 8px;
+        }
+
+        .pb-8 {
+            padding-bottom: 8px;
+        }
+
+        .pr-16 {
+            padding-right: 16px;
+        }
+
+        .pl-16 {
+            padding-left: 16px;
+        }
+
+        .pt-16 {
+            padding-top: 16px;
+        }
+
+        .pb-16 {
+            padding-bottom: 16px;
+        }
+
+        .pr-32 {
+            padding-right: 32px;
+        }
+
+        .pl-32 {
+            padding-left: 32px;
+        }
+
+        .pt-32 {
+            padding-top: 32px;
+        }
+
+        .pb-32 {
+            padding-bottom: 32px;
+        }
+
+        .pr-64 {
+            padding-right: 64px;
+        }
+
+        .pl-64 {
+            padding-left: 64px;
+        }
+
+        .pt-64 {
+            padding-top: 64px;
+        }
+
+        .pb-64 {
+            padding-bottom: 64px;
+        }
+
+        .font-mobile {
+            font-size: 35px;
+            font-weight: 250;
+        }
+
+        .h-250 {
+            height: 250px;
+        }
+
+        .bb-2 {
+            border-bottom: 2px solid black;
+        }
+
+        /* Small devices */
+        @media only screen and (min-width: 600px) {
+            .col-s-0 {
+                display: none !important;
+            }
+
+            .col-s-1 {
+                width: 8.33%;
+            }
+
+            .col-s-2 {
+                width: 16.66%;
+            }
+
+            .col-s-3 {
+                width: 25%;
+            }
+
+            .col-s-4 {
+                width: 33.33%;
+            }
+
+            .col-s-5 {
+                width: 41.66%;
+            }
+
+            .col-s-6 {
+                width: 50%;
+            }
+
+            .col-s-7 {
+                width: 58.33%;
+            }
+
+            .col-s-8 {
+                width: 66.66%;
+            }
+
+            .col-s-9 {
+                width: 75%;
+            }
+
+            .col-s-10 {
+                width: 83.33%;
+            }
+
+            .col-s-11 {
+                width: 91.66%;
+            }
+
+            .col-s-12 {
+                width: 100%;
+            }
+
+            .col-s-auto {
+                display: block;
+            }
+
+
+            .p-s-0 {
+                padding: 0px;
+            }
+
+            .p-s-8 {
+                padding: 8px;
+            }
+
+            .p-s-16 {
+                padding: 16px;
+            }
+
+            .p-s-32 {
+                padding: 32px;
+            }
+
+            .p-s-32 {
+                padding: 64px;
+            }
+
+            .pr-s-0 {
+                padding-right: 0px;
+            }
+
+            .pl-s-0 {
+                padding-left: 0px;
+            }
+
+            .pt-s-0 {
+                padding-top: 0px;
+            }
+
+            .pb-s-0 {
+                padding-bottom: 0px;
+            }
+
+            .pr-s-8 {
+                padding-right: 8px;
+            }
+
+            .pl-s-8 {
+                padding-left: 8px;
+            }
+
+            .pt-s-8 {
+                padding-top: 8px;
+            }
+
+            .pb-s-8 {
+                padding-bottom: 8px;
+            }
+
+            .pr-s-16 {
+                padding-right: 16px;
+            }
+
+            .pl-s-16 {
+                padding-left: 16px;
+            }
+
+            .pt-s-16 {
+                padding-top: 16px;
+            }
+
+            .pb-s-16 {
+                padding-bottom: 16px;
+            }
+
+            .pr-s-32 {
+                padding-right: 32px;
+            }
+
+            .pl-s-32 {
+                padding-left: 32px;
+            }
+
+            .pt-s-32 {
+                padding-top: 32px;
+            }
+
+            .pb-s-32 {
+                padding-bottom: 32px;
+            }
+
+            .pr-s-64 {
+                padding-right: 64px;
+            }
+
+            .pl-s-64 {
+                padding-left: 64px;
+            }
+
+            .pt-s-64 {
+                padding-top: 64px;
+            }
+
+            .pb-s-64 {
+                padding-bottom: 64px;
+            }
+
+            .bb-s-0 {
+                border-bottom: 0;
+            }
+
+            .flex-s-justify-start {
+                justify-content: start;
+            }
+
+            .h-s-50 {
+                height: 50px;
+            }
+
+            .h-s-400 {
+                height: 400px;
+            }
+
+            .flexDirection-s-row {
+                flex-direction: row;
+                justify-content: start;
+            }
+
+            .float-s-left {
+                float: left;
+            }
+
+            .clearFloat-s-left {
+                clear: left;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <header>
+        <h1 class="font-mobile">SEND&nbsp&nbspA&nbsp&nbspREQUEST</h1>
+    </header>
+    <div class="flex mt-8 mb-8">
+        <input id="inpUrl" type="url" placeholder="URL" class="border radius p-8 mb-16 col-12 col-s-6">
+        <input id="inpMethod" list="method" placeholder="Method" class="border radius p-8 ml-8 col-4 col-s-2">
+        <datalist id="method">
+            <option value="GET">
+            <option value="POST">
+        </datalist>
+        <input id="btnSubmit" type="submit" class="border clickable radius p-8 mr-8 col-4 col-s-3">
+    </div>
+    <div class="flex">
+        <div id="divRequest" class="p-8 bb-2 bb-s-0 col-12 col-s-6" style="display: none;">
+            <p style="color: white;" class="mb-8">Request Body:</p>
+            <textarea name="bodyRequest" id="inpRequest" class="white col-12 h-250 p-8"></textarea>
+        </div>
+        <div id="divResponse" class="p-8 col-12 col-s-6" style="display: none;">
+            <p style="color: white;" class="mb-8">Response Body:</p>
+            <textarea name="bodyResponse" id="bodyResponse" class="white col-12 h-250 p-8" disabled></textarea>
+        </div>
+    </div>
+    <div id="divResult" class="p-8 col-12" style="display: none;">
+        <p id="info" class="p-8 white">Plain Text: -, Status: -</p>
+    </div>
+    <script>
+
+        document.getElementById('inpUrl').addEventListener('change', (e) => {
+            url = e.target.value;
+        })
+
+        document.getElementById('inpMethod').addEventListener('keyup', (e) => {
+            if (e.target.value === "GET") {
+                document.getElementById('divResponse').removeAttribute('style');
+                document.getElementById('divResult').removeAttribute('style');
+            } else if (e.target.value === "POST") {
+                document.getElementById('divRequest').removeAttribute('style');
+                document.getElementById('divResult').removeAttribute('style');
+                document.getElementById('divResponse').removeAttribute('style');
+            } else {
+                document.getElementById('divRequest').setAttribute('style', "display: none;");
+                document.getElementById('divResponse').setAttribute('style', "display: none;");
+                document.getElementById('divResult').setAttribute('style', "display: none;");
+                document.getElementById('bodyResponse').innerHTML = "";
+                document.getElementById('info').innerText = `Plain Text: -, Status: -`;
+            }
+        })
+
+
+
+        document.getElementById('btnSubmit').addEventListener('click', (e) => {
+            if (document.getElementById('inpMethod').value === "GET") {
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = () => {
+                    if (xhttp.readyState === 4 && xhttp.status === 200) {
+                        response = xhttp.responseText;
+                        response = newLine(response, "}")
+                        response = newLine(response, ",")
+                        response = newLine(response, "{")
+                        document.getElementById('info').innerText = `Plain Text: ${xhttp.getResponseHeader('content-type')}, Status: ${xhttp.status}`;
+                        document.getElementById('bodyResponse').innerHTML = response;
+                    }
+                    else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+                        document.getElementById('info').innerText = `Plain Text: ${xhttp.getResponseHeader('content-type')}, Status: ${xhttp.status}`;
+                        document.getElementById('bodyResponse').innerHTML = "Some Error Occured... :(";
+                    };
+                }
+                xhttp.open("GET", document.getElementById('inpUrl').value);
+                xhttp.send();
+
+            } else if (document.getElementById('inpMethod').value === "POST") {
+                let xhttp = new XMLHttpRequest();
+                console.log(1);
+                xhttp.onreadystatechange = () => {
+                    if (xhttp.readyState === 4 && xhttp.status === 201) {
+                        response = xhttp.responseText;
+                        response = newLine(response, "}")
+                        response = newLine(response, ",")
+                        response = newLine(response, "{")
+                        document.getElementById('bodyResponse').innerHTML = response;
+                        document.getElementById('info').innerText = `Plain Text: ${xhttp.getResponseHeader('content-type')}, Status: ${xhttp.status}`;
+                    }
+                    else if (xhttp.readyState === 4 && xhttp.status !== 201) {
+                        document.getElementById('info').innerText = `Plain Text: ${xhttp.getResponseHeader('content-type')}, Status: ${xhttp.status}`;
+                        document.getElementById('bodyResponse').innerHTML = "Some Error Occured... :(";
+                    };
+                }
+
+                xhttp.open("POST", document.getElementById('inpUrl').value);
+                xhttp.setRequestHeader('Content-Type', "application/JSON");
+                let data = JSON.parse(document.getElementById('inpRequest').value);
+                console.log(data);
+                xhttp.send(JSON.stringify(data));
+
+            } else alert("Please Enter a Valid Method!")
+        })
+
+
+
+        function newLine(response, char) {
+            response = response.split(char)
+            for (let i = 0; i < response.length; i++) {
+                if (char === "}") response[i] = response[i].concat("\n");
+                else response[i] = "\n".concat(response[i]);
+            }
+            response = response.join(char);
+            return response
+        }
+    </script>
+</body>
+
+</html>
